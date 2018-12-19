@@ -1952,6 +1952,7 @@ MonoBehaviour:
   capacity: 8
   shellLoadTime: 0.105
   shellDisplay: {fileID: 1913156406}
+  playerModel: {fileID: 1451017049}
 --- !u!1001 &1451017048
 Prefab:
   m_ObjectHideFlags: 0
@@ -2002,6 +2003,10 @@ Prefab:
     - target: {fileID: 400002, guid: df02dfe803f8af644bf1648d668a3626, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: df02dfe803f8af644bf1648d668a3626, type: 3}
+      propertyPath: m_Name
+      value: player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df02dfe803f8af644bf1648d668a3626, type: 3}

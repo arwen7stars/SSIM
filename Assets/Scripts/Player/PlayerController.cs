@@ -12,14 +12,14 @@ public class PlayerController : MonoBehaviour {
 	// the shell canvas display
 	public Text shellDisplay;
 
-	// the animator
-	private Animator anim;
+    // the player model transform
+    public Transform playerModel;
+
+    // the animator
+    private Animator anim;
 
 	// the main camera
 	private Camera cam;
-
-	// the player model transform
-	private Transform playerModel;
 
 	// the ray cast from the current mouse position
 	private Ray ray;
@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour {
 
 	void Start () {
 		cam = Camera.main;
-		playerModel = transform.Find("player");
 		anim = playerModel.gameObject.GetComponent<Animator>();
 		shells = capacity;
 	}
