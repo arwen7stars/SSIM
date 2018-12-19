@@ -15,6 +15,6 @@ public static class Logger {
 		// update mean
 		mean = (mean * (accuracy.Count - 1) + acc) / accuracy.Count;
 
-		Debug.Log("Shots: " + accuracy.Count + ", Mean: " + mean);
+		Debug.Log("Shots: " + accuracy.Count + ", Accuracy: " + mean);
 	}
 }
