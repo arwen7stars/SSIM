@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour {
 		cam = Camera.main;
 		anim = playerModel.gameObject.GetComponent<Animator>();
 		shells = capacity;
-	}
+        shellDisplay.text = "SHELLS: " + shells + " out of " + capacity;
+    }
 
 	
 	void Update () {
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 		handleInput();
 
 		// update UI
-		shellDisplay.text = "" + shells;
+		shellDisplay.text = "SHELLS: " + shells + " out of " + capacity;
 	}
 
 
