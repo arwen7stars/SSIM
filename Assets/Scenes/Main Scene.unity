@@ -228,6 +228,10 @@ Prefab:
       propertyPath: m_Name
       value: duck_mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
+      propertyPath: m_TagString
+      value: Duck
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
   m_IsPrefabAsset: 0
@@ -686,6 +690,10 @@ Prefab:
       propertyPath: m_Name
       value: duck_mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
+      propertyPath: m_TagString
+      value: Duck
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
   m_IsPrefabAsset: 0
@@ -973,6 +981,10 @@ Prefab:
     - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
       propertyPath: m_Name
       value: duck_mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
+      propertyPath: m_TagString
+      value: Duck
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
@@ -1659,6 +1671,10 @@ Prefab:
       propertyPath: m_Name
       value: duck_mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
+      propertyPath: m_TagString
+      value: Duck
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
   m_IsPrefabAsset: 0
@@ -2145,6 +2161,10 @@ Prefab:
       propertyPath: m_Name
       value: duck_mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
+      propertyPath: m_TagString
+      value: Duck
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
   m_IsPrefabAsset: 0
@@ -2548,6 +2568,10 @@ Prefab:
       propertyPath: m_Name
       value: duck_mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
+      propertyPath: m_TagString
+      value: Duck
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
   m_IsPrefabAsset: 0
@@ -2677,6 +2701,10 @@ Prefab:
     - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
       propertyPath: m_Name
       value: duck_mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
+      propertyPath: m_TagString
+      value: Duck
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
@@ -2919,6 +2947,10 @@ Prefab:
       propertyPath: m_Name
       value: duck_mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
+      propertyPath: m_TagString
+      value: Duck
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
   m_IsPrefabAsset: 0
@@ -3135,6 +3167,10 @@ Prefab:
     - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
       propertyPath: m_Name
       value: duck_mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
+      propertyPath: m_TagString
+      value: Duck
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4c46c1f1d43b534693efc04878052c2, type: 3}
