@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class DuckController : MonoBehaviour {
 
-	// movement speed
-	public float speed;
+    // movement speed
+    public float speed;
 
 	// rotation speed
 	public float rotspeed;
@@ -23,17 +24,23 @@ public class DuckController : MonoBehaviour {
 	// radius of the target (normalized text coods)
 	public float radius;
 
+    // score object
+    public Logger logger;
+
 	// true if duck wasnt hit this loop
 	private bool alive;
 
 	// initial rotation
 	private Quaternion irotation;
 
+    // water splash sound
+    private AudioSource splashSound;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		alive = true;
 		irotation = transform.rotation;
+        splashSound = GetComponent<AudioSource>();
 	}
 	
 
@@ -70,7 +77,9 @@ public class DuckController : MonoBehaviour {
 			float step = rotspeed * Time.deltaTime;
 
 			transform.rotation = Quaternion.RotateTowards(from, to, step);
-		}
+
+            splashSound.Play();
+        }
 	}
 
 
@@ -91,6 +100,7 @@ public class DuckController : MonoBehaviour {
 			accuracy += 0.5f * (1 - Vector2.Distance(pixelUV, targetCenter) / radius);
 		}
 		
-		Logger.LogShot(accuracy);
+		logger.LogShot(accuracy);
+        logger.IncreaseScore();
 	}
 }

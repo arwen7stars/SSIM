@@ -1,20 +1,35 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
-public static class Logger {
+public class Logger : MonoBehaviour {
 
-	private static List<float> accuracy = new List<float>();
-	private static float mean = 0;
+    // the score canvas display
+    public Text scoreText;
 
-	public static void LogShot(float acc) {
-		
-		// log
-		accuracy.Add(acc);
+    // shots accuracy
+    private List<float> shots = new List<float>();
+
+    // accuracy mean
+	private float mean = 0;
+
+    // current score
+    private int score = 0;
+
+    public void LogShot(float acc) {
+
+        // log
+        shots.Add(acc);
 
 		// update mean
-		mean = (mean * (accuracy.Count - 1) + acc) / accuracy.Count;
+		mean = (mean * (shots.Count - 1) + acc) / shots.Count;
 
-		Debug.Log("Shots: " + accuracy.Count + ", Accuracy: " + mean);
+		Debug.Log("Shots: " + shots.Count + ", Accuracy: " + mean);
 	}
+
+    public void IncreaseScore()
+    {
+        score++;
+        scoreText.text = "Score: " + score;
+    }
 }
