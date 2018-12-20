@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.39438027, g: 0.5636809, b: 0.7479803, a: 1}
+  m_IndirectSpecularColor: {r: 0.40777028, g: 0.5781776, b: 0.7468224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8133770}
+  - component: {fileID: 8133771}
   m_Layer: 0
   m_Name: DuckTarget (2)
   m_TagString: Untagged
@@ -143,6 +144,24 @@ Transform:
   m_Father: {fileID: 2031051308}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &8133771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 8133769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae1ab061405eff4aac1e47ed35b1c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.5
+  rotspeed: 350
+  rotbound: 100
+  rbound: 2.3
+  lbound: -2.6
+  targetCenter: {x: 0.265, y: 0.75}
+  radius: 0.215
 --- !u!1 &39856279
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,6 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 39856280}
+  - component: {fileID: 39856281}
   m_Layer: 0
   m_Name: DuckTarget (1)
   m_TagString: Untagged
@@ -173,6 +193,24 @@ Transform:
   m_Father: {fileID: 2031051308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &39856281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 39856279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae1ab061405eff4aac1e47ed35b1c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.5
+  rotspeed: 350
+  rotbound: 100
+  rbound: 2.3
+  lbound: -2.6
+  targetCenter: {x: 0.265, y: 0.75}
+  radius: 0.215
 --- !u!1001 &55571078
 Prefab:
   m_ObjectHideFlags: 0
@@ -1116,6 +1154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 362250396}
+  - component: {fileID: 362250397}
   m_Layer: 0
   m_Name: DuckTarget (3)
   m_TagString: Untagged
@@ -1138,6 +1177,24 @@ Transform:
   m_Father: {fileID: 2079002325}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &362250397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 362250395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae1ab061405eff4aac1e47ed35b1c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: -1.5
+  rotspeed: 350
+  rotbound: 100
+  rbound: 2.3
+  lbound: -2.6
+  targetCenter: {x: 0.265, y: 0.75}
+  radius: 0.215
 --- !u!1 &377861036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,6 +1635,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 579687359}
+  - component: {fileID: 579687360}
   m_Layer: 0
   m_Name: DuckTarget (3)
   m_TagString: Untagged
@@ -1600,6 +1658,24 @@ Transform:
   m_Father: {fileID: 2031051308}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &579687360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 579687358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae1ab061405eff4aac1e47ed35b1c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.5
+  rotspeed: 350
+  rotbound: 100
+  rbound: 2.3
+  lbound: -2.6
+  targetCenter: {x: 0.265, y: 0.75}
+  radius: 0.215
 --- !u!1 &608256902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,6 +2867,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242477858}
+  - component: {fileID: 1242477859}
   m_Layer: 0
   m_Name: DuckTarget (1)
   m_TagString: Untagged
@@ -2813,6 +2890,24 @@ Transform:
   m_Father: {fileID: 2079002325}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1242477859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1242477857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae1ab061405eff4aac1e47ed35b1c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: -1.5
+  rotspeed: 350
+  rotbound: 100
+  rbound: 2.3
+  lbound: -2.6
+  targetCenter: {x: 0.265, y: 0.75}
+  radius: 0.215
 --- !u!1 &1258386710
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,6 +3528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1773181806}
+  - component: {fileID: 1773181807}
   m_Layer: 0
   m_Name: DuckTarget (2)
   m_TagString: Untagged
@@ -3455,6 +3551,24 @@ Transform:
   m_Father: {fileID: 2079002325}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1773181807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1773181805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae1ab061405eff4aac1e47ed35b1c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: -1.5
+  rotspeed: 350
+  rotbound: 100
+  rbound: 2.3
+  lbound: -2.6
+  targetCenter: {x: 0.265, y: 0.75}
+  radius: 0.215
 --- !u!1 &1803239840
 GameObject:
   m_ObjectHideFlags: 0

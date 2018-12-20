@@ -43,12 +43,25 @@ public class DuckController : MonoBehaviour {
 		// move in line
 		transform.Translate(speed * Time.deltaTime, 0, 0, Space.World);
 
-		// reset if out of vision
-		if (transform.localPosition.x > rbound) {
-			alive = true;
-			transform.localPosition = new Vector3(lbound, transform.localPosition.y, transform.localPosition.z);
-			transform.rotation = irotation;
-		}
+        // reset if out of vision
+        if (speed > 0)
+        {
+            if (transform.localPosition.x > rbound)
+            {
+                alive = true;
+                transform.localPosition = new Vector3(lbound, transform.localPosition.y, transform.localPosition.z);
+                transform.rotation = irotation;
+            }
+        }
+        else
+        {
+            if (transform.localPosition.x < lbound)
+            {
+                alive = true;
+                transform.localPosition = new Vector3(rbound, transform.localPosition.y, transform.localPosition.z);
+                transform.rotation = irotation;
+            }
+        }
 
 		// dying animation
 		if (!alive && transform.eulerAngles.z != rotbound) {
