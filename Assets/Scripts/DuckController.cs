@@ -24,9 +24,6 @@ public class DuckController : MonoBehaviour {
 	// radius of the target (normalized text coods)
 	public float radius;
 
-    // score object
-    public Logger logger;
-
 	// true if duck wasnt hit this loop
 	private bool alive;
 
@@ -99,8 +96,8 @@ public class DuckController : MonoBehaviour {
 		if (target) {
 			accuracy += 0.5f * (1 - Vector2.Distance(pixelUV, targetCenter) / radius);
 		}
-		
-		logger.LogShot(accuracy);
-        logger.IncreaseScore();
+
+        GameManager.instance.LogShot(accuracy);
+        GameManager.instance.IncreaseScore();
 	}
 }

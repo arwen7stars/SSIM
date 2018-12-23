@@ -14,7 +14,6 @@ public class CameraController : MonoBehaviour {
 	// localPosition to move camera to
 	private Vector3 target;
 
-
 	void Start () {
 		// change cursor to crosshair and fix its hotspot
 		Cursor.SetCursor(cursor, new Vector2(cursor.width / 2, cursor.height / 2), CursorMode.Auto);
@@ -23,18 +22,15 @@ public class CameraController : MonoBehaviour {
 		target = original;
 	}
 
-
 	void Update() {
 		if (transform.localPosition != target) {
 			transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, speed * Time.deltaTime);
 		}
 	}
 
-
 	public void ResetTarget() {
 		target = original;
 	}
-
 
 	public void SetTarget(Vector3 target) {
 		this.target = target;

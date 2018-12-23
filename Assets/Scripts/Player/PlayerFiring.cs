@@ -11,13 +11,9 @@ public class PlayerFiring : StateMachineBehaviour {
 	// duck tag
 	private const string TARGET_TAG = "Target";
 
-    // score object
-    public Logger logger;
-
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		player = GameObject.Find("Player").GetComponent<PlayerController>();
-        logger = GameObject.Find("Score").GetComponent<Logger>();
 
         // shoot
         player.SetShells(player.GetShells() - 1);
@@ -32,10 +28,10 @@ public class PlayerFiring : StateMachineBehaviour {
 			} else if (hit.transform.tag == DUCK_TAG) {
 				hit.transform.gameObject.GetComponentInParent<DuckController>().Hit(false, hit.textureCoord2);
 			} else {
-                logger.LogShot(0);
+                GameManager.instance.LogShot(0);
 			}
 		} else {
-            logger.LogShot(0);
+            GameManager.instance.LogShot(0);
 		}	
 	}
 

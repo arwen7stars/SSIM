@@ -41,17 +41,17 @@ public class PlayerController : MonoBehaviour {
 		ray = cam.ScreenPointToRay(Input.mousePosition);
 
 		// adjust aim
-		aim();
+		Aim();
 
-		// read user inputs
-		handleInput();
+        // read user inputs
+        HandleInput();
 
 		// update UI
 		shellDisplay.text = "SHELLS: " + shells + " out of " + capacity;
 	}
 
 
-	void handleInput() {
+	void HandleInput() {
 		// shoot
 		if (Input.GetButton("Fire") && shells > 0) {
 			anim.SetTrigger("fire");
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 
-	void aim() {
+	void Aim() {
 		Vector3 target = ray.GetPoint(cam.farClipPlane);
 		playerModel.LookAt(target);
 		Debug.DrawLine(ray.origin, target, Color.red);
