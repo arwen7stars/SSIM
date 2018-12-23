@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour {
     private List<float> shots = new List<float>();
 
     // accuracy mean
-	private float mean = 0;
+    private float mean = 0;
 
     // current score
     private int score = 0;
@@ -36,15 +37,16 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void LogShot(float acc) {
+    public void LogShot(float acc)
+    {
         // add new shot accuracy
         shots.Add(acc);
 
-		// update mean
-		mean = (mean * (shots.Count - 1) + acc) / shots.Count;
+        // update mean
+        mean = (mean * (shots.Count - 1) + acc) / shots.Count;
 
-		Debug.Log("Shots: " + shots.Count + ", Accuracy: " + mean);
-	}
+        Debug.Log("Shots: " + shots.Count + ", Accuracy: " + mean);
+    }
 
     public void IncreaseScore()
     {
