@@ -22,6 +22,9 @@ public class PlayerReloading : StateMachineBehaviour {
 
 		// play camera animation
 		cam.SetTarget(target);
+
+		// close the curtains
+		CurtainsController.CloseCurtains();
 	}
 
 
@@ -44,5 +47,6 @@ public class PlayerReloading : StateMachineBehaviour {
 
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		cam.ResetTarget();
+		CurtainsController.OpenCurtains();
 	}
 }

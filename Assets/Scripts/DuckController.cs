@@ -21,6 +21,9 @@ public class DuckController : MonoBehaviour {
 	// radius of the target (normalized text coods)
 	public float radius;
 
+	// chance of going red (per second) [0, 100]
+	public float redchance;
+
 	// true if duck wasnt hit this loop
 	private bool alive;
 
@@ -35,6 +38,13 @@ public class DuckController : MonoBehaviour {
 		alive = true;
 		irotation = transform.rotation;
         splashSound = GetComponent<AudioSource>();
+
+		int rand = Random.Range(0, 100);
+		if (rand < redchance) {
+			Renderer rend = transform.Find("duck").GetComponent<MeshRenderer>();
+			rend.material.shader = Shader.Find("_Color");
+			rend.material.SetColor("_Color", Color.red);
+		}
 	}
 	
 
@@ -58,7 +68,7 @@ public class DuckController : MonoBehaviour {
 			transform.rotation = Quaternion.RotateTowards(from, to, step);
 
             splashSound.Play();
-        }
+        }		
 	}
 
 	

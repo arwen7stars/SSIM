@@ -234,8 +234,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 90370141}
   m_LocalRotation: {x: -0.000000036783558, y: 0.7071068, z: -0.7071067, w: -0.0000000699866}
-  m_LocalPosition: {x: -3.6626577, y: -3.878658, z: 27.39008}
-  m_LocalScale: {x: -0.46640316, y: -0.39525688, z: -0.9999999}
+  m_LocalPosition: {x: 11.1, y: -3.9, z: 27.4}
+  m_LocalScale: {x: 0.4, y: -0.4, z: -1}
   m_Children: []
   m_Father: {fileID: 1637077270}
   m_RootOrder: 1
@@ -967,8 +967,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1258386710}
   m_LocalRotation: {x: -0.00000003793076, y: 0.7071068, z: -0.7071067, w: -0.00000006883939}
-  m_LocalPosition: {x: -73.93389, y: -3.769373, z: 27.390078}
-  m_LocalScale: {x: -0.39525694, y: -0.39525688, z: -0.9999999}
+  m_LocalPosition: {x: -73.5, y: -3.77, z: 27.4}
+  m_LocalScale: {x: -0.4, y: -0.4, z: -1}
   m_Children: []
   m_Father: {fileID: 1637077270}
   m_RootOrder: 3
@@ -1411,6 +1411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1637077270}
   - component: {fileID: 1637077269}
+  - component: {fileID: 1637077271}
   m_Layer: 0
   m_Name: StageCurtains
   m_TagString: Untagged
@@ -1455,6 +1456,19 @@ Transform:
   m_Father: {fileID: 763420667}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1637077271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637077268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3f7a336477def419ab3a69e85a7910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.5
+  limit: 0.9
 --- !u!1 &1761750332
 GameObject:
   m_ObjectHideFlags: 0
