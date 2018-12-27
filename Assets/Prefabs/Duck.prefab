@@ -326,7 +326,7 @@ MonoBehaviour:
   speed: 1.5
   rotspeed: 350
   rotbound: 100
-  rbound: 2.17
-  lbound: -2.33
+  rbound: 2.5
+  lbound: -2.1
   targetCenter: {x: 0.265, y: 0.75}
   radius: 0.215

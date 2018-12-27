@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class DuckController : MonoBehaviour {
 
     // movement speed
-    public float speed;
+    private float speed;
 
 	// rotation speed
 	public float rotspeed;
@@ -12,11 +12,8 @@ public class DuckController : MonoBehaviour {
 	// rotation bound
 	public float rotbound;
 
-	// right bound
-	public float rbound;
-
-	// left bound
-	public float lbound;
+	// x bound
+	private float xbound;
 
 	// center of target (normalized text coords)
 	public Vector2 targetCenter;
@@ -47,25 +44,10 @@ public class DuckController : MonoBehaviour {
 		// move in line
 		transform.Translate(speed * Time.deltaTime, 0, 0, Space.World);
 
-        // reset if out of vision
-        if (speed > 0)
-        {
-            if (transform.localPosition.x > rbound)
-            {
-                alive = true;
-                transform.localPosition = new Vector3(lbound, transform.localPosition.y, transform.localPosition.z);
-                transform.rotation = irotation;
-            }
-        }
-        else
-        {
-            if (transform.localPosition.x < lbound)
-            {
-                alive = true;
-                transform.localPosition = new Vector3(rbound, transform.localPosition.y, transform.localPosition.z);
-                transform.rotation = irotation;
-            }
-        }
+		// kill self
+		if (speed < 0 && transform.localPosition.x <= xbound || speed > 0 && transform.localPosition.x >= xbound) {
+			Destroy(gameObject);
+		}
 
 		// dying animation
 		if (!alive && transform.eulerAngles.z != rotbound) {
@@ -77,6 +59,18 @@ public class DuckController : MonoBehaviour {
 
             splashSound.Play();
         }
+	}
+
+	
+	/**
+	* Initialize this object
+	*/
+	public void init(float speed, float xbound) {
+		this.speed = speed;
+		this.xbound = xbound;
+		if (speed < 0) {
+			transform.Find("duck").Rotate(0, 180, 0);
+		}
 	}
 
 
