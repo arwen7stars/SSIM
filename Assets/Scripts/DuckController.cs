@@ -37,13 +37,12 @@ public class DuckController : MonoBehaviour {
     void Start () {
 		alive = true;
 		irotation = transform.rotation;
-        splashSound = GetComponent<AudioSource>();
+        splashSound = GameObject.Find("Targets").GetComponent<AudioSource>();
 
 		int rand = Random.Range(0, 100);
 		if (rand < redchance) {
 			Renderer rend = transform.Find("duck").GetComponent<MeshRenderer>();
-			rend.material.shader = Shader.Find("_Color");
-			rend.material.SetColor("_Color", Color.red);
+            rend.material.color = Color.red;
 		}
 	}
 	
@@ -102,6 +101,14 @@ public class DuckController : MonoBehaviour {
 		}
 
         GameManager.instance.LogShot(accuracy);
-        GameManager.instance.IncreaseScore();
-	}
+
+        Renderer rend = transform.Find("duck").GetComponent<MeshRenderer>();
+
+        // increase score only if duck is red
+        if (rend.material.color == Color.red)
+        {
+            GameManager.instance.IncreaseScore();
+        }
+
+    }
 }

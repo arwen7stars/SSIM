@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
 
     public void IncreaseScore()
     {
-        // increase score
+        // increase  score
         score++;
 
         // show score on Canvas
