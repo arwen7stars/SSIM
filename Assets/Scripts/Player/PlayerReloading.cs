@@ -16,7 +16,11 @@ public class PlayerReloading : StateMachineBehaviour {
 
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		GameObject playerObj = GameObject.Find("Player");
+
+        // curtains close and player reloads gun while game is on pause
+        GameManager.instance.gamePause = true;
+
+        GameObject playerObj = GameObject.Find("Player");
 		player = playerObj.GetComponent<PlayerController>();
 		cam = playerObj.GetComponentInChildren<CameraController>();
 
@@ -48,5 +52,5 @@ public class PlayerReloading : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		cam.ResetTarget();
 		CurtainsController.OpenCurtains();
-	}
+    }
 }

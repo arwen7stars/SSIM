@@ -22,6 +22,9 @@ public class CurtainsController : MonoBehaviour {
 	// true if animation is playing, false otherwise
 	private bool animating;
 
+    // true if curtains are closing, false otherwise
+    private bool closing;
+
 	// the instance
 	static CurtainsController self;
 
@@ -42,6 +45,13 @@ public class CurtainsController : MonoBehaviour {
 			left.transform.localScale += new Vector3(delta, 0, 0);
 			right.transform.localScale -= new Vector3(delta, 0, 0);
 		} else {
+            // if curtains were opening until they reached the limit...
+            if (animating && !closing)
+            {
+                // ducks start spawning again
+                GameManager.instance.gamePause = false;
+            }
+
 			animating = false;
 		}		
 	}
@@ -51,6 +61,7 @@ public class CurtainsController : MonoBehaviour {
 	public static void OpenCurtains() {
 		if (self == null) return;
 
+        self.closing = false;
 		self.animating = true;
 		self.total = 0;
 		self.speed = self.speed > 0 ? -1 * self.speed : self.speed;
@@ -61,6 +72,7 @@ public class CurtainsController : MonoBehaviour {
 	public static void CloseCurtains() {
 		if (self == null) return;
 
+        self.closing = true;
 		self.animating = true;
 		self.total = 0;
 		self.speed = self.speed < 0 ? -1 * self.speed : self.speed;

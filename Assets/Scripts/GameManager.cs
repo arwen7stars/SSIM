@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour {
     // the score canvas display
     public Text scoreText;
 
+    // wait for new round
+    public bool gamePause = false;
+
     // list of shots' accuracy
     private List<float> shots = new List<float>();
 
@@ -48,6 +51,7 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Shots: " + shots.Count + ", Accuracy: " + mean);
     }
 
+    // Increase score if red ducks are shot
     public void IncreaseScore()
     {
         // increase  score

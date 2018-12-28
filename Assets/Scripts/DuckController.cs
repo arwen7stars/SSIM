@@ -33,17 +33,27 @@ public class DuckController : MonoBehaviour {
     // water splash sound
     private AudioSource splashSound;
 
+    // duck color
+    private Color color;
+
     // Use this for initialization
     void Start () {
 		alive = true;
 		irotation = transform.rotation;
+
+        // Get splash sound effect from scene
         splashSound = GameObject.Find("Targets").GetComponent<AudioSource>();
 
-		int rand = Random.Range(0, 100);
+        // Find duck renderer
+        Renderer rend = transform.Find("duck").GetComponent<MeshRenderer>();
+
+        int rand = Random.Range(0, 100);
 		if (rand < redchance) {
-			Renderer rend = transform.Find("duck").GetComponent<MeshRenderer>();
             rend.material.color = Color.red;
 		}
+
+        // Set duck color
+        color = rend.material.color;
 	}
 	
 
@@ -74,7 +84,7 @@ public class DuckController : MonoBehaviour {
 	/**
 	* Initialize this object
 	*/
-	public void init(float speed, float xbound) {
+	public void Init(float speed, float xbound) {
 		this.speed = speed;
 		this.xbound = xbound;
 		if (speed < 0) {
@@ -90,25 +100,30 @@ public class DuckController : MonoBehaviour {
 	* @param pixelUV Normalized text coords of the hit point.
 	*/
 	public void Hit(bool target, Vector2 pixelUV) {
+        // duck is no longer alive
 		alive = false;
 
-		// accuracy baseline for a duck hit is 0.5
-		float accuracy = 0.5f;
-
-		// if target was hit, update its accuracy (up to 1)
-		if (target) {
-			accuracy += 0.5f * (1 - Vector2.Distance(pixelUV, targetCenter) / radius);
-		}
-
-        GameManager.instance.LogShot(accuracy);
-
-        Renderer rend = transform.Find("duck").GetComponent<MeshRenderer>();
-
-        // increase score only if duck is red
-        if (rend.material.color == Color.red)
+        if (color != Color.red)
         {
+            // If duck hit isn't red, it doesn't count
+            GameManager.instance.LogShot(0);
+        }
+        else
+        {
+            // accuracy baseline for a duck hit is 0.5
+            float accuracy = 0.5f;
+
+            // if target was hit, update its accuracy (up to 1)
+            if (target)
+            {
+                accuracy += 0.5f * (1 - Vector2.Distance(pixelUV, targetCenter) / radius);
+            }
+
+            GameManager.instance.LogShot(accuracy);
+
+            // increase score only if duck is red
             GameManager.instance.IncreaseScore();
         }
-
+        
     }
 }

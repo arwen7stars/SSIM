@@ -33,15 +33,19 @@ public class DuckFactoryController : MonoBehaviour {
 
 	
 	void Update () {
+        // if game is paused ie changing rounds, don't spawn any ducks
+        if (GameManager.instance.gamePause) return;
+        
+        // update spawn meter
+        spawnmeter += spawnspeed * Time.deltaTime;
 
-		// update spawn meter
-		spawnmeter += spawnspeed * Time.deltaTime;
-
-		// spawn new duck
-		if (spawnmeter >= 1) {
-			NewDuck();
-			spawnmeter = 0;
-		}
+        // spawn new duck
+        if (spawnmeter >= 1)
+        {
+            NewDuck();
+            spawnmeter = 0;
+        }
+        
 	}
 
 	
@@ -50,6 +54,6 @@ public class DuckFactoryController : MonoBehaviour {
 	*/
 	public void NewDuck() {
 		GameObject obj = Instantiate(duck, position, Quaternion.Euler(rotation), transform);
-		obj.GetComponent<DuckController>().init(speed, xbound);
+		obj.GetComponent<DuckController>().Init(speed, xbound);
 	}
 }
