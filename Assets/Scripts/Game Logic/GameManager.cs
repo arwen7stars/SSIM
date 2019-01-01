@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     // static instance of GameManager which allows it to be accessed by any other script.
     public static GameManager instance = null;
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour {
 
     // wait for new round
     public bool gamePause = false;
+
+    // game over
+    public bool gameOver = false;
 
     // list of shots' accuracy
     private List<float> shots = new List<float>();
@@ -59,5 +63,20 @@ public class GameManager : MonoBehaviour {
 
         // show score on Canvas
         scoreText.text = "Score: " + score;
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public void SetGameOver(bool gameOver)
+    {
+        this.gameOver = gameOver;
+    }
+
+    public bool GetGameOver()
+    {
+        return gameOver;
     }
 }

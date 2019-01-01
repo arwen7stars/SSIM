@@ -43,6 +43,9 @@ public class PlayerController : MonoBehaviour {
 		// adjust aim
 		Aim();
 
+        // ignore user input if game over
+        if (GameManager.instance.GetGameOver()) return;
+
         // read user inputs
         HandleInput();
 
