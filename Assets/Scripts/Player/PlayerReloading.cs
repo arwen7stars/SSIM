@@ -18,7 +18,7 @@ public class PlayerReloading : StateMachineBehaviour {
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
         // curtains close and player reloads gun while game is on pause
-        GameManager.instance.gamePause = true;
+        GameManager.instance.roundPause = true;
 
         GameObject playerObj = GameObject.Find("Player");
 		player = playerObj.GetComponent<PlayerController>();

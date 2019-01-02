@@ -45,11 +45,11 @@ public class TimerManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // ignore timer if game is switching between rounds
-        if (GameManager.instance.gamePause) return;
+        if (GameManager.instance.roundPause) return;
 
         if (timeLeft > 0)
         {
-            convertTime();
+            ConvertTime();
             textTimer.text = minutes + ":" + seconds;
         } else
         {
@@ -60,7 +60,7 @@ public class TimerManager : MonoBehaviour {
                 PlayerHighscore.AddScore(finalScore);
 
                 savedScore = true;
-                GameManager.instance.SetGameOver(true);
+                GameManager.instance.gameOver = true;
                 StartCoroutine(ShowTimerOverMsg());
             }
         }
@@ -82,7 +82,7 @@ public class TimerManager : MonoBehaviour {
     }
 
     // Convert timeLeft to minutes and seconds
-    private void convertTime()
+    private void ConvertTime()
     {
         tmpTime -= Time.deltaTime;
         timeLeft = (int)tmpTime;

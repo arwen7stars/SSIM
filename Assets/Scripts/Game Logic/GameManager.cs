@@ -13,7 +13,10 @@ public class GameManager : MonoBehaviour
     public Text scoreText;
 
     // wait for new round
-    public bool gamePause = false;
+    public bool roundPause = false;
+
+    // game stopped because of menu
+    public bool gameStop = false;
 
     // game over
     public bool gameOver = false;
@@ -68,15 +71,5 @@ public class GameManager : MonoBehaviour
     public int GetScore()
     {
         return score;
-    }
-
-    public void SetGameOver(bool gameOver)
-    {
-        this.gameOver = gameOver;
-    }
-
-    public bool GetGameOver()
-    {
-        return gameOver;
     }
 }

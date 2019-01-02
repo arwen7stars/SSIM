@@ -49,7 +49,7 @@ public class CurtainsController : MonoBehaviour {
             if (animating && !closing)
             {
                 // ducks start spawning again
-                GameManager.instance.gamePause = false;
+                GameManager.instance.roundPause = false;
             }
 
 			animating = false;
