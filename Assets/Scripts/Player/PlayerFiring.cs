@@ -11,6 +11,9 @@ public class PlayerFiring : StateMachineBehaviour {
 	// duck tag
 	private const string TARGET_TAG = "Target";
 
+    // shooting sound index
+    private const int SHOOT_IDX = 0;
+
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		player = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -19,7 +22,8 @@ public class PlayerFiring : StateMachineBehaviour {
         player.SetShells(player.GetShells() - 1);
 
         // play shotgun sound
-        player.GetComponent<AudioSource>().Play();
+        AudioSource[] shotgun_sounds = player.GetComponents<AudioSource>();
+        shotgun_sounds[SHOOT_IDX].Play();
 
 		RaycastHit hit;
 		if (Physics.Raycast(player.GetRay(), out hit)) {

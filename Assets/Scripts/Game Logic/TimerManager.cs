@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class TimerManager : MonoBehaviour {
 
     // timer in seconds
-    public const int TIMER_SECONDS = 180;
+    public const int TIMER_SECONDS = 120;
 
     // timer text UI
     public Text textTimer;

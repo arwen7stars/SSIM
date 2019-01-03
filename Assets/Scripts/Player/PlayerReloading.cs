@@ -14,6 +14,9 @@ public class PlayerReloading : StateMachineBehaviour {
 	// the camera controller
 	private CameraController cam;
 
+    // reloading sound index
+    private const int RELOAD_IDX = 1;
+
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         GameObject playerObj = GameObject.Find("Player");
@@ -25,7 +28,11 @@ public class PlayerReloading : StateMachineBehaviour {
 
 		// close the curtains
 		CurtainsController.CloseCurtains();
-	}
+
+        // play shotgun sound
+        AudioSource[] shotgun_sounds = player.GetComponents<AudioSource>();
+        shotgun_sounds[RELOAD_IDX].Play();
+    }
 
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
@@ -41,12 +48,15 @@ public class PlayerReloading : StateMachineBehaviour {
 		// play camera animation
 		if (stateInfo.normalizedTime >= restoreCameraNormTime) {
 			cam.ResetTarget();
-		}
+            // stop shotgun sound
+            AudioSource[] shotgun_sounds = player.GetComponents<AudioSource>();
+            shotgun_sounds[RELOAD_IDX].Stop();
+        }
 	}
 
 
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		cam.ResetTarget();
+        cam.ResetTarget();
 		CurtainsController.OpenCurtains();
     }
 }
