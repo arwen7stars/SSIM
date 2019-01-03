@@ -44,10 +44,11 @@ public class PlayerController : MonoBehaviour {
 		Aim();
 
         // ignore user input if game over
-        if (GameManager.instance.gameOver || GameManager.instance.gameStop) return;
-
-        // read user inputs
-        HandleInput();
+        if (!GameManager.instance.gameOver && !GameManager.instance.gameStop && !GameManager.instance.roundPause)
+        {
+            // read user inputs
+            HandleInput();
+        }
 
 		// update UI
 		shellDisplay.text = "SHELLS: " + shells + " out of " + capacity;
