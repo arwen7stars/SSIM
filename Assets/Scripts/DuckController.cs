@@ -68,6 +68,12 @@ public class DuckController : MonoBehaviour {
 			Destroy(gameObject);
 		}
 
+        // all ducks die switching rounds! :D
+        if (GameManager.instance.roundPause)
+        {
+            alive = false;
+        }
+
 		// dying animation
 		if (!alive && transform.eulerAngles.z != rotbound) {
 			Quaternion from = transform.rotation;
