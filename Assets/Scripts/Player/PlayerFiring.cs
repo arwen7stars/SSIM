@@ -39,9 +39,16 @@ public class PlayerFiring : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		animator.ResetTrigger("fire");
 
-		// automatic reload
-		if (player.GetShells() <= 0) {
-			animator.SetTrigger("reload");
+        if (player.GetShells() <= 0) {
+            if (GameManager.instance.timerOver)
+            {
+                // if timer is over, close curtains and don't reload
+                CurtainsController.CloseCurtains();
+            } else
+            {
+                // if timer is not over, trigger automatic reload
+                animator.SetTrigger("reload");
+            }
 		}
 	}
 }

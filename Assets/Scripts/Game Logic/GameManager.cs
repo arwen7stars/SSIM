@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     // game stopped because of menu
     public bool gameStop = false;
 
+    // timer over
+    public bool timerOver = false;
+
     // game over
     public bool gameOver = false;
 

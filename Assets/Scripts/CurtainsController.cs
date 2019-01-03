@@ -76,5 +76,8 @@ public class CurtainsController : MonoBehaviour {
 		self.animating = true;
 		self.total = 0;
 		self.speed = self.speed < 0 ? -1 * self.speed : self.speed;
-	}
+
+        // curtains close and player reloads gun while game is on pause
+        GameManager.instance.roundPause = true;
+    }
 }
