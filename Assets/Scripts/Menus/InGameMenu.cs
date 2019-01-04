@@ -17,6 +17,19 @@ public class InGameMenu : MonoBehaviour
     // cursor icon
     public Texture2D cursor;
 
+    // the player controller
+    public PlayerController player;
+
+    // shotgun sounds
+    AudioSource[] shotgun_sounds;
+
+    private void Start()
+    {
+        GameObject playerObj = GameObject.Find("Player");
+        player = playerObj.GetComponent<PlayerController>();
+        shotgun_sounds = player.GetComponents<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -35,6 +48,11 @@ public class InGameMenu : MonoBehaviour
                 mainMenu.SetActive(true);
 
                 Time.timeScale = 0;
+
+                for (int i = 0; i < shotgun_sounds.Length; i++)
+                {
+                    shotgun_sounds[i].Pause();
+                }
             }
             else
             {
@@ -46,6 +64,11 @@ public class InGameMenu : MonoBehaviour
                 mainMenu.SetActive(false);
 
                 Time.timeScale = 1;
+
+                for (int i = 0; i < shotgun_sounds.Length; i++)
+                {
+                    shotgun_sounds[i].UnPause();
+                }
             }
         }
     }

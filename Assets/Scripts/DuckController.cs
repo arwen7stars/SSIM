@@ -127,8 +127,11 @@ public class DuckController : MonoBehaviour {
 
             GameManager.instance.LogShot(accuracy);
 
+            // score increment varies depending on accuracy
+            int increment = (int)(accuracy * 10) - 4;
+
             // increase score only if duck is red
-            GameManager.instance.IncreaseScore();
+            GameManager.instance.IncreaseScore(increment);
         }
         
     }

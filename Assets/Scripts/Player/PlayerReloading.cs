@@ -29,7 +29,7 @@ public class PlayerReloading : StateMachineBehaviour {
 		// close the curtains
 		CurtainsController.CloseCurtains();
 
-        // play shotgun sound
+        // play reloading sound
         AudioSource[] shotgun_sounds = player.GetComponents<AudioSource>();
         shotgun_sounds[RELOAD_IDX].Play();
     }
@@ -48,7 +48,7 @@ public class PlayerReloading : StateMachineBehaviour {
 		// play camera animation
 		if (stateInfo.normalizedTime >= restoreCameraNormTime) {
 			cam.ResetTarget();
-            // stop shotgun sound
+            // stop reloading sound
             AudioSource[] shotgun_sounds = player.GetComponents<AudioSource>();
             shotgun_sounds[RELOAD_IDX].Stop();
         }

@@ -62,10 +62,10 @@ public class GameManager : MonoBehaviour
     }
 
     // Increase score if red ducks are shot
-    public void IncreaseScore()
+    public void IncreaseScore(int increment)
     {
         // increase  score
-        score++;
+        score += increment;
 
         // show score on Canvas
         scoreText.text = "Score: " + score;
