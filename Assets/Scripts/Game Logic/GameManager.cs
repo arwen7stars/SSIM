@@ -27,8 +27,14 @@ public class GameManager : MonoBehaviour
     // list of shots' accuracy
     private List<float> shots = new List<float>();
 
-    // accuracy mean
-    private float mean = 0;
+	// list of shots' accuracy (average) per round
+	private List<float> shotsPerRound = new List<float>();
+
+	// list of ducks' lifespan
+	private List<float> ducks = new List<float>();
+
+	// list of ducks' lifespan (average) per round
+	private List<float> ducksPerRound = new List<float>();
 
     // current score
     private int score = 0;
@@ -50,15 +56,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LogShot(float acc)
+    public void LogShot(float acc, float lifespan)
     {
         // add new shot accuracy
         shots.Add(acc);
-
-        // update mean
-        mean = (mean * (shots.Count - 1) + acc) / shots.Count;
-
-        Debug.Log("Shots: " + shots.Count + ", Accuracy: " + mean);
+		ducks.Add(lifespan);
     }
 
     // Increase score if red ducks are shot
@@ -75,4 +77,38 @@ public class GameManager : MonoBehaviour
     {
         return score;
     }
+
+	public void EndRound()
+	{
+		// pause the round
+		roundPause = true;
+
+		// calculate rounds accuracy and store it
+		float shotsMean = 0;
+		foreach (float acc in shots)
+		{
+			shotsMean += acc;
+		}
+		shotsMean = shotsMean / shots.Count;
+		shotsPerRound.Add(shotsMean);
+
+		float ducksMean = 0;
+		int nValidDucks = 0;
+		foreach (float lifespan in ducks)
+		{
+			if (lifespan > 0)
+			{
+				ducksMean += lifespan;
+				nValidDucks++;
+			}			
+		}
+		ducksMean = ducksMean / nValidDucks;
+		ducksPerRound.Add(ducksMean);
+
+		// prepare next ite
+		shots.Clear();
+		ducks.Clear();
+
+		Debug.Log("Round: #" + shotsPerRound.Count + ", Accuracy: " + (shotsMean * 100).ToString("F2") + "%, Reaction Time: " + ducksMean + "s.");
+	}
 }

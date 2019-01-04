@@ -27,19 +27,19 @@ public class DuckController : MonoBehaviour {
 	// true if duck wasnt hit this loop
 	private bool alive;
 
-	// initial rotation
-	private Quaternion irotation;
-
     // water splash sound
     private AudioSource splashSound;
 
     // duck color
     private Color color;
 
+	// time this duck was born
+	private float bornTime;
+
     // Use this for initialization
     void Start () {
 		alive = true;
-		irotation = transform.rotation;
+		bornTime = Time.time;
 
         // Get splash sound effect from scene
         splashSound = GameObject.Find("Targets").GetComponent<AudioSource>();
@@ -64,15 +64,14 @@ public class DuckController : MonoBehaviour {
 		transform.Translate(speed * Time.deltaTime, 0, 0, Space.World);
 
 		// kill self
-		if (speed < 0 && transform.localPosition.x <= xbound || speed > 0 && transform.localPosition.x >= xbound) {
+		if (GameManager.instance.roundPause || speed < 0 && transform.localPosition.x <= xbound || speed > 0 && transform.localPosition.x >= xbound) {
+			// not killing a red duck counts as a missed shot
+			if (alive && !GameManager.instance.roundPause && color == Color.red) {
+				GameManager.instance.LogShot(0, Time.time - bornTime);
+				Debug.Log("missed!");
+			}
 			Destroy(gameObject);
 		}
-
-        // all ducks die switching rounds! :D
-        if (GameManager.instance.roundPause)
-        {
-            alive = false;
-        }
 
 		// dying animation
 		if (!alive && transform.eulerAngles.z != rotbound) {
@@ -112,7 +111,7 @@ public class DuckController : MonoBehaviour {
         if (color != Color.red)
         {
             // If duck hit isn't red, it doesn't count
-            GameManager.instance.LogShot(0);
+            GameManager.instance.LogShot(0, 0);
         }
         else
         {
@@ -125,7 +124,7 @@ public class DuckController : MonoBehaviour {
                 accuracy += 0.5f * (1 - Vector2.Distance(pixelUV, targetCenter) / radius);
             }
 
-            GameManager.instance.LogShot(accuracy);
+            GameManager.instance.LogShot(accuracy, Time.time - bornTime);
 
             // score increment varies depending on accuracy
             int increment = (int)(accuracy * 10) - 4;
