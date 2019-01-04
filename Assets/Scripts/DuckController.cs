@@ -68,7 +68,6 @@ public class DuckController : MonoBehaviour {
 			// not killing a red duck counts as a missed shot
 			if (alive && !GameManager.instance.roundPause && color == Color.red) {
 				GameManager.instance.LogShot(0, Time.time - bornTime);
-				Debug.Log("missed!");
 			}
 			Destroy(gameObject);
 		}

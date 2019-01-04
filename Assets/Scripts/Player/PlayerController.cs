@@ -27,8 +27,12 @@ public class PlayerController : MonoBehaviour {
 	// current amount of shells
 	private int shells;
 
+	// prevous mouse position
+	private Vector3 prevMousePosition;
+
 
 	void Start () {
+		prevMousePosition = new Vector3(float.MinValue, float.MinValue);
 		cam = Camera.main;
 		anim = playerModel.gameObject.GetComponent<Animator>();
 		shells = capacity;
@@ -37,8 +41,10 @@ public class PlayerController : MonoBehaviour {
 
 	
 	void Update () {
+		Vector3 mousePosition = Input.mousePosition;
+
 		// cast ray from mouse position
-		ray = cam.ScreenPointToRay(Input.mousePosition);
+		ray = cam.ScreenPointToRay(mousePosition);
 
 		// adjust aim
 		Aim();
@@ -46,9 +52,21 @@ public class PlayerController : MonoBehaviour {
         // ignore user input if game over
         if (!GameManager.instance.gameOver && !GameManager.instance.gameStop && !GameManager.instance.roundPause)
         {
-            // read user inputs
+			// first time
+			if (prevMousePosition.x == float.MinValue && prevMousePosition.y == float.MinValue)
+			{
+				prevMousePosition = mousePosition;
+			}
+
+			// store mouse traveled distance this update frame
+			GameManager.instance.LogMouse(Vector3.Distance(mousePosition, prevMousePosition));
+			
+			// read user inputs
             HandleInput();
         }
+
+		// update mouse pos even through menus (but dont store it)
+		prevMousePosition = mousePosition;
 
 		// update UI
 		shellDisplay.text = "SHELLS: " + shells + " out of " + capacity;

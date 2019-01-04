@@ -36,6 +36,12 @@ public class GameManager : MonoBehaviour
 	// list of ducks' lifespan (average) per round
 	private List<float> ducksPerRound = new List<float>();
 
+	// mouse total travelled distance
+	private float mouseTotalTravelledDistance = 0;
+
+	// mouse travelled distance (per round)
+	private float mouseTravelledDistance = 0;
+
     // current score
     private int score = 0;
 
@@ -78,6 +84,12 @@ public class GameManager : MonoBehaviour
         return score;
     }
 
+	public void LogMouse(float distance)
+	{
+		mouseTotalTravelledDistance += distance;
+		mouseTravelledDistance += distance;
+	}
+
 	public void EndRound()
 	{
 		// pause the round
@@ -105,10 +117,12 @@ public class GameManager : MonoBehaviour
 		ducksMean = ducksMean / nValidDucks;
 		ducksPerRound.Add(ducksMean);
 
+		Debug.Log("Round: #" + shotsPerRound.Count + ", Accuracy: " + (shotsMean * 100).ToString("F2") +
+		"%, Reaction Time: " + ducksMean.ToString("F2") + "s, Mouse Travelled Distance: " + mouseTravelledDistance + "px.");
+
 		// prepare next ite
 		shots.Clear();
 		ducks.Clear();
-
-		Debug.Log("Round: #" + shotsPerRound.Count + ", Accuracy: " + (shotsMean * 100).ToString("F2") + "%, Reaction Time: " + ducksMean + "s.");
+		mouseTravelledDistance = 0;
 	}
 }
