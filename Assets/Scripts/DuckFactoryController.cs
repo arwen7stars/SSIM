@@ -16,11 +16,17 @@ public class DuckFactoryController : MonoBehaviour {
 	// movement speed of prefab
 	public float speed;
 
+	// initial movement speed
+	private float ispeed;
+
 	// prefab x bound
 	public float xbound;
 
 	// spawn speed (ducks per second)
 	public float spawnspeed;
+
+	// initial spawn speed
+	private float ispawnspeed;
 
 	// how close we are to next spawn
 	private float spawnmeter;
@@ -29,6 +35,8 @@ public class DuckFactoryController : MonoBehaviour {
 	void Start () {
 		NewDuck();
 		spawnmeter = 0;
+		ispeed = speed;
+		ispawnspeed = spawnspeed;
 	}
 
 	
@@ -46,6 +54,13 @@ public class DuckFactoryController : MonoBehaviour {
             spawnmeter = 0;
         }
         
+	}
+
+
+	public void UpdateSpeed(float percentIncrease)
+	{
+		speed += percentIncrease * ispeed;
+		spawnspeed += percentIncrease * ispawnspeed;
 	}
 
 	

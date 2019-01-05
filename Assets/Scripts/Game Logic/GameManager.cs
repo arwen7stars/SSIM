@@ -12,6 +12,15 @@ public class GameManager : MonoBehaviour
     // the score canvas display
     public Text scoreText;
 
+	// list of all target poles
+	public List<GameObject> targetPoles;
+
+	// list of all duck factories
+	private List<DuckFactoryController> duckFactories;
+
+	// percentage to increase difficulty per round
+	public float percentDiffIncrease;
+
     // wait for new round
     public bool roundPause = false;
 
@@ -61,6 +70,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+	void Start()
+	{
+		duckFactories = new List<DuckFactoryController>();
+		foreach (GameObject pole in targetPoles)
+		{
+			duckFactories.Add(pole.GetComponent<DuckFactoryController>());
+		}
+	}
 
     public void LogShot(float acc, float lifespan)
     {
@@ -124,5 +142,10 @@ public class GameManager : MonoBehaviour
 		shots.Clear();
 		ducks.Clear();
 		mouseTravelledDistance = 0;
+
+		foreach (DuckFactoryController factory in duckFactories)
+		{
+			factory.UpdateSpeed(percentDiffIncrease);
+		}
 	}
 }
