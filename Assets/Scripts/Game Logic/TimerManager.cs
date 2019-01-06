@@ -46,8 +46,8 @@ public class TimerManager : MonoBehaviour {
 	void FixedUpdate () {
         if (timeLeft > 0)
         {
-            // ignore timer if game is switching between rounds
-            if (GameManager.instance.roundPause) return;
+            // ignore timer if menu is being showed
+            if (GameManager.instance.gameStop) return;
 
             ConvertTime();
             textTimer.text = minutes + ":" + seconds;

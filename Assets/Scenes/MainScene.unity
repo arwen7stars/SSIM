@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.39438027, g: 0.5636809, b: 0.7479803, a: 1}
+  m_IndirectSpecularColor: {r: 0.40777028, g: 0.5781776, b: 0.7468224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02fe5d88c6bf67d4c801fa379ad5d3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 1465478741}
   targetPoles:
   - {fileID: 1859336484}
   - {fileID: 369417284}
@@ -2289,7 +2289,6 @@ GameObject:
   - component: {fileID: 1465478742}
   - component: {fileID: 1465478741}
   - component: {fileID: 1465478740}
-  - component: {fileID: 1465478743}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -2369,24 +2368,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1465478738}
   m_CullTransparentMesh: 0
---- !u!114 &1465478743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1465478738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02fe5d88c6bf67d4c801fa379ad5d3f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1465478741}
-  targetPoles: []
-  percentDiffIncrease: 0
-  roundPause: 0
-  gameStop: 0
-  timerOver: 0
-  gameOver: 0
 --- !u!1 &1522682882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1257341819849692, guid: 66796418d8779d945aec394d7241f0f1,
