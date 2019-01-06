@@ -59,6 +59,9 @@ public class CurtainsController : MonoBehaviour {
 
 	// Open the curtains
 	public static void OpenCurtains() {
+        // if game over, don't open curtains
+        if (GameManager.instance.gameOver) return;
+
 		if (self == null) return;
 
         self.closing = false;
