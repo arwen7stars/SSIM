@@ -1383,7 +1383,7 @@ MonoBehaviour:
   speedPercentIncrease: 0.2
   scalePercentIncrease: 0
   scaleDiscFactor: 0.6
-  disctFactorMaxRoundN: 2
+  disctFactorMaxRoundI: 2
   adaptTargetAcc: 0.75
   roundPause: 0
   gameStop: 0

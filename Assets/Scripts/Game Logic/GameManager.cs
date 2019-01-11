@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
 	// discount factor for the scale increase
 	public float scaleDiscFactor;
 
-	// number of the rounds before discount factor is maxed
-	public float disctFactorMaxRoundN;
+	// index of round to maximize discount factor (minimum 1)
+	public float disctFactorMaxRoundI;
 
 	// goal for the player accuracy during adaptive gameplay
 	public float adaptTargetAcc;
@@ -168,10 +168,10 @@ public class GameManager : MonoBehaviour
 
 			// discount factor isnt fully applied in the first N rounds
 			float discFactorPercent;
-			int nround = shotsPerRound.Count - 1;
-			if (nround < disctFactorMaxRoundN)
+			int iround = shotsPerRound.Count - 1;
+			if (iround < disctFactorMaxRoundI)
 			{
-				discFactorPercent = nround / disctFactorMaxRoundN; 
+				discFactorPercent = iround / disctFactorMaxRoundI; 
 			} else {
 				discFactorPercent = 1.0f;
 			}
