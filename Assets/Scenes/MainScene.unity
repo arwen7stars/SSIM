@@ -1382,8 +1382,8 @@ MonoBehaviour:
   - {fileID: 1522682882}
   speedPercentIncrease: 0.2
   scalePercentIncrease: 0
-  scaleDiscFactor: 0.6
-  disctFactorMaxRoundI: 2
+  scaleDiscFactor: 0.7
+  disctFactorMaxRoundI: 3
   adaptTargetAcc: 0.75
   roundPause: 0
   gameStop: 0
