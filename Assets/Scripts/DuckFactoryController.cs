@@ -13,6 +13,12 @@ public class DuckFactoryController : MonoBehaviour {
 	// start rotation of prefab
 	public Vector3 rotation;
 
+	// scale of the prefab
+	public float scale;
+
+	// initial scale of the prefab
+	private float iscale;
+
 	// movement speed of prefab
 	public float speed;
 
@@ -35,6 +41,7 @@ public class DuckFactoryController : MonoBehaviour {
 	void Start () {
 		NewDuck();
 		spawnmeter = 0;
+		iscale = scale;
 		ispeed = speed;
 		ispawnspeed = spawnspeed;
 	}
@@ -57,10 +64,37 @@ public class DuckFactoryController : MonoBehaviour {
 	}
 
 
-	public void UpdateSpeed(float percentIncrease)
+	/**
+	* Linearly updates scale and speed params by the given ammount.
+	*
+	* @param scalePercentIncrease Percentage to increase the current scale by (based on initial scale).
+	* @param speedPercentIncrease Percentage to increase the current speed by (based on initial speed).
+	*/
+	public void UpdateScaleAndSpeedLinearlyBy(float scalePercentIncrease, float speedPercentIncrease)
 	{
-		speed += percentIncrease * ispeed;
-		spawnspeed += percentIncrease * ispawnspeed;
+		// scale
+		scale += scalePercentIncrease * iscale;
+		
+		// speed and spawn rate
+		speed += speedPercentIncrease * ispeed;
+		spawnspeed += speedPercentIncrease * ispawnspeed;
+	}
+
+
+	/**
+	* Updates scale and speed params by the given ammount.
+	*
+	* @param scalePercentIncrease Percentage to increase the current scale by.
+	* @param speedPercentIncrease Percentage to increase the current speed by.
+	*/
+	public void UpdateScaleAndSpeedBy(float scalePercentIncrease, float speedPercentIncrease)
+	{
+		// scale
+		scale += scalePercentIncrease * scale;
+
+		// speed and spawn rate
+		speed += speedPercentIncrease * speed;
+		spawnspeed += speedPercentIncrease * spawnspeed;
 	}
 
 	
@@ -69,6 +103,6 @@ public class DuckFactoryController : MonoBehaviour {
 	*/
 	public void NewDuck() {
 		GameObject obj = Instantiate(duck, position, Quaternion.Euler(rotation), transform);
-		obj.GetComponent<DuckController>().Init(speed, xbound);
+		obj.GetComponent<DuckController>().Init(speed, xbound, scale);
 	}
 }

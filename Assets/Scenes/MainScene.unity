@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.40777028, g: 0.5781776, b: 0.7468224, a: 1}
+  m_IndirectSpecularColor: {r: 0.39438027, g: 0.5636809, b: 0.7479803, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -176,6 +176,11 @@ Prefab:
       propertyPath: xbound
       value: -2.33
       objectReference: {fileID: 0}
+    - target: {fileID: 114493659146628370, guid: 66796418d8779d945aec394d7241f0f1,
+        type: 2}
+      propertyPath: scale
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66796418d8779d945aec394d7241f0f1, type: 2}
   m_IsPrefabAsset: 0
@@ -231,6 +236,11 @@ Prefab:
         type: 2}
       propertyPath: position.y
       value: 2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493659146628370, guid: 66796418d8779d945aec394d7241f0f1,
+        type: 2}
+      propertyPath: scale
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66796418d8779d945aec394d7241f0f1, type: 2}
@@ -1370,11 +1380,16 @@ MonoBehaviour:
   - {fileID: 1859336484}
   - {fileID: 369417284}
   - {fileID: 1522682882}
-  percentDiffIncrease: 0.2
+  speedPercentIncrease: 0.2
+  scalePercentIncrease: 0
+  scaleDiscFactor: 0.6
+  disctFactorMaxRoundN: 2
+  adaptTargetAcc: 0.75
   roundPause: 0
   gameStop: 0
   timerOver: 0
   gameOver: 0
+  adaptive: 1
 --- !u!1 &597278230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3021,6 +3036,11 @@ Prefab:
     - target: {fileID: 4212333923242116, guid: 66796418d8779d945aec394d7241f0f1, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493659146628370, guid: 66796418d8779d945aec394d7241f0f1,
+        type: 2}
+      propertyPath: scale
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66796418d8779d945aec394d7241f0f1, type: 2}

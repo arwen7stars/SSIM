@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class DuckController : MonoBehaviour {
 
-    // movement speed
+	// movement speed
     private float speed;
 
 	// rotation speed
@@ -88,12 +88,14 @@ public class DuckController : MonoBehaviour {
 	/**
 	* Initialize this object
 	*/
-	public void Init(float speed, float xbound) {
+	public void Init(float speed, float xbound, float scale) {
 		this.speed = speed;
 		this.xbound = xbound;
 		if (speed < 0) {
 			transform.Find("duck").Rotate(0, 180, 0);
 		}
+
+		transform.localScale = new Vector3(scale, scale, scale);
 	}
 
 

@@ -18,8 +18,20 @@ public class GameManager : MonoBehaviour
 	// list of all duck factories
 	private List<DuckFactoryController> duckFactories;
 
-	// percentage to increase difficulty per round
-	public float percentDiffIncrease;
+	// percentage to increase speed per round (linearly)
+	public float speedPercentIncrease;
+
+	// percentage to increase scale per round (linearly)
+	public float scalePercentIncrease;
+
+	// discount factor for the scale increase
+	public float scaleDiscFactor;
+
+	// number of the rounds before discount factor is maxed
+	public float disctFactorMaxRoundN;
+
+	// goal for the player accuracy during adaptive gameplay
+	public float adaptTargetAcc;
 
     // wait for new round
     public bool roundPause = false;
@@ -32,6 +44,9 @@ public class GameManager : MonoBehaviour
 
     // game over
     public bool gameOver = false;
+
+	// true if difficulty is adaptive, false if linear
+	public bool adaptive;
 
     // list of shots' accuracy
     private List<float> shots = new List<float>();
@@ -136,10 +151,45 @@ public class GameManager : MonoBehaviour
 		shots.Clear();
 		ducks.Clear();
 		mouseTravelledDistance = 0;
+		UpdateDifficulty(shotsMean, ducksMean);
+	}
 
+
+	/**
+	* Updates the game difficulty given the round stats.
+	*
+	* @param roundAccuracy Average accuracy of the previous round.
+	* @param roundReactionTime Average reaction time of the previous round.
+	*/
+	void UpdateDifficulty(float roundAccuracy, float roundReactionTime) {
+
+		// TODO speed as well
+		if (adaptive) {
+
+			// discount factor isnt fully applied in the first N rounds
+			float discFactorPercent;
+			int nround = shotsPerRound.Count - 1;
+			if (nround < disctFactorMaxRoundN)
+			{
+				discFactorPercent = nround / disctFactorMaxRoundN; 
+			} else {
+				discFactorPercent = 1.0f;
+			}
+
+			scalePercentIncrease = (1 - scaleDiscFactor * discFactorPercent) * (1 - roundAccuracy / adaptTargetAcc);
+			Debug.Log("Accuracy: " + roundAccuracy + ", Scale increase: " + (scalePercentIncrease * 100).ToString("F2") + "%");
+		}
+		
 		foreach (DuckFactoryController factory in duckFactories)
 		{
-			factory.UpdateSpeed(percentDiffIncrease);
+			if (adaptive)
+			{
+				factory.UpdateScaleAndSpeedBy(scalePercentIncrease, 0);
+			}
+			else
+			{
+				factory.UpdateScaleAndSpeedLinearlyBy(scalePercentIncrease, speedPercentIncrease);
+			}
 		}
 	}
 }
