@@ -80,17 +80,10 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-    public void LogShot(bool reaction_time, float acc, float lifespan)
+    public void LogShot(float acc, float lifespan)
     {
-
-        if (reaction_time)
-        {
-            ducks.Add(lifespan);
-        } else
-        {
-            shots.Add(acc);
-            ducks.Add(lifespan);
-        }
+        if (acc >= 0) shots.Add(acc);
+		if (lifespan >= 0) ducks.Add(lifespan);
     }
 
     // Increase score if red ducks are shot
@@ -129,16 +122,11 @@ public class GameManager : MonoBehaviour
 		shotsPerRound.Add(shotsMean);
 
 		float ducksMean = 0;
-		int nValidDucks = 0;
 		foreach (float lifespan in ducks)
 		{
-			if (lifespan > 0)
-			{
-				ducksMean += lifespan;
-				nValidDucks++;
-			}			
+			ducksMean += lifespan;		
 		}
-		ducksMean = ducksMean / nValidDucks;
+		ducksMean = ducksMean / ducks.Count;
 		ducksPerRound.Add(ducksMean);
 
 		Debug.Log("Round: #" + shotsPerRound.Count + ", Accuracy: " + (shotsMean * 100).ToString("F2") +

@@ -65,9 +65,9 @@ public class DuckController : MonoBehaviour {
 
 		// kill self
 		if (GameManager.instance.roundPause || speed < 0 && transform.localPosition.x <= xbound || speed > 0 && transform.localPosition.x >= xbound) {
-			// not killing a red duck counts as a missed shot
+			// duck wasn't shot by the player
 			if (alive && !GameManager.instance.roundPause && color == Color.red) {
-				GameManager.instance.LogShot(true, 0, Time.time - bornTime);
+				GameManager.instance.LogShot(-1, Time.time - bornTime);
 			}
 			Destroy(gameObject);
 		}
@@ -110,7 +110,7 @@ public class DuckController : MonoBehaviour {
         if (color != Color.red)
         {
             // If duck hit isn't red, it doesn't count
-            GameManager.instance.LogShot(false, 0, 0);
+            GameManager.instance.LogShot(0, -1);
         }
         else
         {
@@ -123,7 +123,7 @@ public class DuckController : MonoBehaviour {
                 accuracy += 0.5f * (1 - Vector2.Distance(pixelUV, targetCenter) / radius);
             }
 
-            GameManager.instance.LogShot(false, accuracy, Time.time - bornTime);
+            GameManager.instance.LogShot(accuracy, Time.time - bornTime);
 
             // score increment varies depending on accuracy
             int increment = (int)(accuracy * 10) - 4;

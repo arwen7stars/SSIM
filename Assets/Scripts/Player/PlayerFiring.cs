@@ -32,10 +32,10 @@ public class PlayerFiring : StateMachineBehaviour {
 			} else if (hit.transform.tag == DUCK_TAG) {
 				hit.transform.gameObject.GetComponentInParent<DuckController>().Hit(false, hit.textureCoord2);
 			} else {
-                GameManager.instance.LogShot(false, 0, 0);
+                GameManager.instance.LogShot(0, -1);
 			}
 		} else {
-            GameManager.instance.LogShot(false, 0, 0);
+            GameManager.instance.LogShot(0, -1);
 		}	
 	}
 
