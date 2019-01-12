@@ -31,8 +31,11 @@ public class DuckFactoryController : MonoBehaviour {
 	// spawn speed (ducks per second)
 	public float spawnspeed;
 
-	// initial spawn speed
-	private float ispawnspeed;
+    // max allowed scale
+    public float maxallowedscale;
+
+    // initial spawn speed
+    private float ispawnspeed;
 
 	// how close we are to next spawn
 	private float spawnmeter;
@@ -72,11 +75,14 @@ public class DuckFactoryController : MonoBehaviour {
 	*/
 	public void UpdateScaleAndSpeedBy(float scalePercentIncrease, float speedPercentIncrease)
 	{
-		// scale
-		scale += scalePercentIncrease * scale;
+        // scale
+        scale += scalePercentIncrease * scale;
 
-		// speed and spawn rate
-		speed += speedPercentIncrease * ispeed;
+        if (scale > maxallowedscale)
+            scale = maxallowedscale;
+
+        // speed and spawn rate
+        speed += speedPercentIncrease * ispeed;
 		spawnspeed += speedPercentIncrease * ispawnspeed;
 	}
 
