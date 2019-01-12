@@ -1385,6 +1385,7 @@ MonoBehaviour:
   scaleDiscFactor: 0.7
   disctFactorMaxRoundI: 3
   adaptTargetAcc: 0.75
+  adaptReactSpeed: 2.5
   roundPause: 0
   gameStop: 0
   timerOver: 0

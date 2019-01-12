@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
 	// goal for the player accuracy during adaptive gameplay
 	public float adaptTargetAcc;
 
+	// goal for the player reaction speed during adaptive gameplay
+	public float adaptReactSpeed;
+
     // wait for new round
     public bool roundPause = false;
 
@@ -59,6 +62,9 @@ public class GameManager : MonoBehaviour
 
 	// list of ducks' lifespan (average) per round
 	private List<float> ducksPerRound = new List<float>();
+
+	// number of missed ducks
+	private int missedDucks = 0;
 
 	// mouse total travelled distance
 	private float mouseTotalTravelledDistance = 0;
@@ -99,7 +105,8 @@ public class GameManager : MonoBehaviour
     {
         if (acc >= 0) shots.Add(acc);
 		if (lifespan >= 0) ducks.Add(lifespan);
-    }
+		if (acc < 0 && lifespan > 0) missedDucks++;
+    } 
 
     // Increase score if red ducks are shot
     public void IncreaseScore(int increment)
@@ -144,14 +151,15 @@ public class GameManager : MonoBehaviour
 		ducksMean = ducksMean / ducks.Count;
 		ducksPerRound.Add(ducksMean);
 
-		Debug.Log("Round: #" + shotsPerRound.Count + ", Accuracy: " + (shotsMean * 100).ToString("F2") +
+		Debug.Log("Round: #" + shotsPerRound.Count + ", Missed Ducks: " + missedDucks + ", Accuracy: " + (shotsMean * 100).ToString("F2") +
 		"%, Reaction Time: " + ducksMean.ToString("F2") + "s, Mouse Travelled Distance: " + mouseTravelledDistance + "px.");
 
 		// prepare next ite
+		UpdateDifficulty(shotsMean);
 		shots.Clear();
 		ducks.Clear();
 		mouseTravelledDistance = 0;
-		UpdateDifficulty(shotsMean, ducksMean);
+		missedDucks = 0;
 	}
 
 
@@ -159,9 +167,8 @@ public class GameManager : MonoBehaviour
 	* Updates the game difficulty given the round stats.
 	*
 	* @param roundAccuracy Average accuracy of the previous round.
-	* @param roundReactionTime Average reaction time of the previous round.
 	*/
-	void UpdateDifficulty(float roundAccuracy, float roundReactionTime) {
+	void UpdateDifficulty(float roundAccuracy) {
 
 		// TODO speed as well
 		if (adaptive) {
@@ -177,19 +184,20 @@ public class GameManager : MonoBehaviour
 			}
 
 			scalePercentIncrease = (1 - scaleDiscFactor * discFactorPercent) * (1 - roundAccuracy / adaptTargetAcc);
-			Debug.Log("Accuracy: " + roundAccuracy + ", Scale increase: " + (scalePercentIncrease * 100).ToString("F2") + "%");
+
+			// if user missed duck, go back to previous speed stage
+			if ((missedDucks > 1 && speedPercentIncrease > 0) ||
+				(missedDucks < 1 && speedPercentIncrease < 0)) {
+				speedPercentIncrease = -1 * speedPercentIncrease;
+			}
+
+			Debug.Log("Accuracy: " + roundAccuracy + ", Scale increase: " + (scalePercentIncrease * 100).ToString("F2") +
+			"%, Speed increase: " + (speedPercentIncrease * 100).ToString("F2") + "%");
 		}
 		
 		foreach (DuckFactoryController factory in duckFactories)
 		{
-			if (adaptive)
-			{
-				factory.UpdateScaleAndSpeedBy(scalePercentIncrease, 0);
-			}
-			else
-			{
-				factory.UpdateScaleAndSpeedLinearlyBy(scalePercentIncrease, speedPercentIncrease);
-			}
+			factory.UpdateScaleAndSpeedBy(scalePercentIncrease, speedPercentIncrease);
 		}
 	}
 }

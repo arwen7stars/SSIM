@@ -65,27 +65,10 @@ public class DuckFactoryController : MonoBehaviour {
 
 
 	/**
-	* Linearly updates scale and speed params by the given ammount.
-	*
-	* @param scalePercentIncrease Percentage to increase the current scale by (based on initial scale).
-	* @param speedPercentIncrease Percentage to increase the current speed by (based on initial speed).
-	*/
-	public void UpdateScaleAndSpeedLinearlyBy(float scalePercentIncrease, float speedPercentIncrease)
-	{
-		// scale
-		scale += scalePercentIncrease * iscale;
-		
-		// speed and spawn rate
-		speed += speedPercentIncrease * ispeed;
-		spawnspeed += speedPercentIncrease * ispawnspeed;
-	}
-
-
-	/**
 	* Updates scale and speed params by the given ammount.
 	*
-	* @param scalePercentIncrease Percentage to increase the current scale by.
-	* @param speedPercentIncrease Percentage to increase the current speed by.
+	* @param scalePercentIncrease Percentage to increase the current scale by (non-linear).
+	* @param speedPercentIncrease Percentage to increase the current speed by (linear).
 	*/
 	public void UpdateScaleAndSpeedBy(float scalePercentIncrease, float speedPercentIncrease)
 	{
@@ -93,8 +76,8 @@ public class DuckFactoryController : MonoBehaviour {
 		scale += scalePercentIncrease * scale;
 
 		// speed and spawn rate
-		speed += speedPercentIncrease * speed;
-		spawnspeed += speedPercentIncrease * spawnspeed;
+		speed += speedPercentIncrease * ispeed;
+		spawnspeed += speedPercentIncrease * ispawnspeed;
 	}
 
 	
