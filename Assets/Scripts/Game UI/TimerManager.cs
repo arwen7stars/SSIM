@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class TimerManager : MonoBehaviour {
+public class TimerManager : MonoBehaviour
+{
 
     // timer in seconds
-    public const int TIMER_SECONDS = 180;
+    public const int TIMER_SECONDS = 10;
 
     // timer text UI
     public Text textTimer;
@@ -34,16 +35,18 @@ public class TimerManager : MonoBehaviour {
     private const float SHOWING_MSG = 3.0f;
 
     // int corresponding to start menu scene
-    private const int START_MENU_SCENE = 0;
+    private const int END_MENU_SCENE = 2;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         timeLeft = TIMER_SECONDS;
         tmpTime = TIMER_SECONDS;
     }
-	
-	// Update is called once per frame
-	void FixedUpdate () {
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         if (!GameManager.instance.gameStart) return;
 
         if (timeLeft > 0)
@@ -53,11 +56,13 @@ public class TimerManager : MonoBehaviour {
 
             ConvertTime();
             textTimer.text = minutes + ":" + seconds;
-        } else
+        }
+        else
         {
             GameManager.instance.timerOver = true;
 
-            if (GameManager.instance.roundPause) {
+            if (GameManager.instance.roundPause)
+            {
                 if (!savedScore)
                 {
                     GameManager.instance.gameOver = true;
@@ -65,6 +70,7 @@ public class TimerManager : MonoBehaviour {
                     // game over
                     int finalScore = GameManager.instance.GetScore();
                     PlayerHighscore.AddScore(finalScore);
+                    UpdatePlayerPrefs();
 
                     savedScore = true;
 
@@ -73,6 +79,15 @@ public class TimerManager : MonoBehaviour {
             }
         }
 
+    }
+
+    public void UpdatePlayerPrefs()
+    {
+        if (PlayerPrefs.HasKey(GameManager.SECOND_GAME))
+        {
+            PlayerPrefs.SetInt(GameManager.SECOND_GAME, 1);         // 1 is true (second game)
+        }
+        else PlayerPrefs.SetInt(GameManager.SECOND_GAME, 0);        // 0 is false (first game)
     }
 
     // Show timer over message
@@ -86,7 +101,7 @@ public class TimerManager : MonoBehaviour {
         timerOverMsg.SetActive(false);
 
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        SceneManager.LoadScene(START_MENU_SCENE);
+        SceneManager.LoadScene(END_MENU_SCENE);
     }
 
     // Convert timeLeft to minutes and seconds

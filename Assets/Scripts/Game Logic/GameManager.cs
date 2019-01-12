@@ -78,9 +78,17 @@ public class GameManager : MonoBehaviour
     // current score
     private int score = 0;
 
+    // key prefix for gamemode
+    public const string GAME_MODE = "game_mode";
+
+    // key for checking if this is the second game player has played the game
+    public const string SECOND_GAME = "second_game";
+
     // Awake is always called before any Start functions
     void Awake()
     {
+        LoadGameMode();
+
         // check if instance already exists
         if (instance == null)
         {
@@ -92,6 +100,22 @@ public class GameManager : MonoBehaviour
         {
             // then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
+        }
+    }
+
+    public void LoadGameMode()
+    {
+        int gameMode = 0;
+
+        if (PlayerPrefs.HasKey(GAME_MODE))
+            gameMode = PlayerPrefs.GetInt(GAME_MODE);
+
+        if (gameMode == 0)      // 0 is linear mode
+        {
+            adaptive = false;
+        } else
+        {
+            adaptive = true;
         }
     }
 
