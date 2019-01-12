@@ -44,6 +44,8 @@ public class TimerManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        if (!GameManager.instance.gameStart) return;
+
         if (timeLeft > 0)
         {
             // ignore timer if menu is being showed

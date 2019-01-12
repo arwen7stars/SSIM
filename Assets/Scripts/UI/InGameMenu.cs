@@ -93,6 +93,7 @@ public class InGameMenu : MonoBehaviour
     {
         GameManager.instance.gameStop = false;
         Time.timeScale = 1;
+
         SceneManager.LoadScene(0);
 
     }

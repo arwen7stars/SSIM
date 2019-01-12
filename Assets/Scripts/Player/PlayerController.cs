@@ -49,8 +49,9 @@ public class PlayerController : MonoBehaviour {
 		// adjust aim
 		Aim();
 
-        // ignore user input if game over
-        if (!GameManager.instance.gameOver && !GameManager.instance.gameStop && !GameManager.instance.roundPause)
+        // ignore user input if game over or if game is has not started yet
+        if (GameManager.instance.gameStart && !GameManager.instance.gameOver 
+            && !GameManager.instance.gameStop && !GameManager.instance.roundPause)
         {
 			// first time
 			if (prevMousePosition.x == float.MinValue && prevMousePosition.y == float.MinValue)

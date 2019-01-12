@@ -48,8 +48,14 @@ public class CurtainsController : MonoBehaviour {
             // if curtains were opening until they reached the limit...
             if (animating && !closing)
             {
-                // ducks start spawning again
-                GameManager.instance.roundPause = false;
+                if (GameManager.instance.gameStart)
+                {
+                    // ducks start spawning again
+                    GameManager.instance.roundPause = false;
+                } else
+                {
+                    GameManager.instance.gameStart = true;
+                }
             }
 
 			animating = false;

@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
     // game stopped because of menu
     public bool gameStop = false;
 
+    // game start
+    public bool gameStart = false;
+
     // timer over
     public bool timerOver = false;
 
@@ -114,6 +117,8 @@ public class GameManager : MonoBehaviour
         // increase  score
         score += increment;
 
+        if (score < 0) score = 0;
+
         // show score on Canvas
         scoreText.text = "Score: " + score;
     }
@@ -159,7 +164,6 @@ public class GameManager : MonoBehaviour
 		shots.Clear();
 		ducks.Clear();
 		mouseTravelledDistance = 0;
-		missedDucks = 0;
 	}
 
 
@@ -193,11 +197,32 @@ public class GameManager : MonoBehaviour
 
 			Debug.Log("Accuracy: " + roundAccuracy + ", Scale increase: " + (scalePercentIncrease * 100).ToString("F2") +
 			"%, Speed increase: " + (speedPercentIncrease * 100).ToString("F2") + "%");
-		}
+		} else
+        {
+            int iround = shotsPerRound.Count;
+
+            if (iround > 2 && iround < 10)
+            {
+                speedPercentIncrease = speedPercentIncrease / 2;
+            } else if (iround > 10)
+            {
+                speedPercentIncrease = speedPercentIncrease / 3;
+            }
+        }
 		
 		foreach (DuckFactoryController factory in duckFactories)
 		{
 			factory.UpdateScaleAndSpeedBy(scalePercentIncrease, speedPercentIncrease);
 		}
 	}
+
+    public int GetMissedDucks()
+    {
+        return missedDucks;
+    }
+
+    public void SetMissedDucks(int noDucks)
+    {
+        this.missedDucks = noDucks;
+    }
 }
