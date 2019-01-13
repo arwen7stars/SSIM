@@ -50,8 +50,8 @@ public class DuckFactoryController : MonoBehaviour {
 
 	
 	void Update () {
-        // if game is paused ie changing rounds, don't spawn any ducks
-        if (GameManager.instance.roundPause || !GameManager.instance.gameStart) return;
+        // if game is paused or hasn't started or has finished, don't spawn any ducks
+        if (GameManager.instance.roundPause || !GameManager.instance.gameStart || GameManager.instance.gameOver) return;
         
         // update spawn meter
         spawnmeter += spawnspeed * Time.deltaTime;

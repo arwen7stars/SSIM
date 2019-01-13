@@ -122,7 +122,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4212333923242116, guid: 66796418d8779d945aec394d7241f0f1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4212333923242116, guid: 66796418d8779d945aec394d7241f0f1, type: 2}
       propertyPath: m_LocalPosition.y
@@ -216,7 +216,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4212333923242116, guid: 66796418d8779d945aec394d7241f0f1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4212333923242116, guid: 66796418d8779d945aec394d7241f0f1, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1633,14 +1633,14 @@ MonoBehaviour:
   scalePercentIncrease: 0
   scaleDiscFactor: 0.7
   disctFactorMaxRoundI: 3
-  adaptTargetAcc: 0.75
+  adaptTargetAcc: 0.6
   adaptReactSpeed: 2.5
   roundPause: 0
   gameStop: 0
   gameStart: 0
   timerOver: 0
   gameOver: 0
-  adaptive: 0
+  adaptive: 1
 --- !u!1 &569491915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3438,7 +3438,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4212333923242116, guid: 66796418d8779d945aec394d7241f0f1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4212333923242116, guid: 66796418d8779d945aec394d7241f0f1, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3494,6 +3494,10 @@ Prefab:
     - target: {fileID: 114493659146628370, guid: 66796418d8779d945aec394d7241f0f1,
         type: 2}
       propertyPath: spawnspeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1257341819849692, guid: 66796418d8779d945aec394d7241f0f1, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
