@@ -54,6 +54,16 @@ public class EndMenu : MonoBehaviour {
         }
 	}
 
+    public void OpenAdaptiveURL()
+    {
+        Application.OpenURL("http://sigarra.up.pt/feup/pt/web_page.inicial");
+    }
+
+    public void OpenLinearURL()
+    {
+        Application.OpenURL("https://webmail.fe.up.pt/");
+    }
+
 
     public void BackToMenu()
     {

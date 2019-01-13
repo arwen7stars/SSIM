@@ -8,7 +8,7 @@ public class TimerManager : MonoBehaviour
 {
 
     // timer in seconds
-    public const int TIMER_SECONDS = 10;
+    public const int TIMER_SECONDS = 180;
 
     // timer text UI
     public Text textTimer;

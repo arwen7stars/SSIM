@@ -37,8 +37,6 @@ public class StartMenuManager : MonoBehaviour
             game_mode = Random.Range(0, 2);
             PlayerPrefs.SetInt(GameManager.GAME_MODE, game_mode);   // 0 is linear, 1 is adaptive
         }
-
-        Debug.Log(game_mode);
     }
 
     // play game
