@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
     {
         int game_mode = -1;
 
-        if (!PlayerPrefs.HasKey(GameManager.SECOND_GAME))       // if this is the first game
+        if (!PlayerPrefs.HasKey(GameManager.SECOND_GAME))           // if this is the first game
         {
             game_mode = Random.Range(0, 2);
             PlayerPrefs.SetInt(GameManager.GAME_MODE, game_mode);   // 0 is linear, 1 is adaptive
@@ -252,9 +252,9 @@ public class GameManager : MonoBehaviour
 
 			scalePercentIncrease = (1 - scaleDiscFactor * discFactorPercent) * (1 - roundAccuracy / adaptTargetAcc);
 
-			// if user missed duck, go back to previous speed stage
+			// if user missed duck more than 1 duck, go back to previous speed stage
 			if ((missedDucks > 1 && speedPercentIncrease > 0) ||
-				(missedDucks < 1 && speedPercentIncrease < 0)) {
+				(missedDucks < 2 && speedPercentIncrease < 0)) {
 				speedPercentIncrease = -1 * speedPercentIncrease;
 			}
 
@@ -266,10 +266,10 @@ public class GameManager : MonoBehaviour
 
             if (iround > 2 && iround < 10)
             {
-                speedPercentIncrease = speedPercentIncrease / 2;
+                speedPercentIncrease = speedPercentIncrease / 1.5f;
             } else if (iround > 10)
             {
-                speedPercentIncrease = speedPercentIncrease / 3;
+                speedPercentIncrease = speedPercentIncrease / 2;
             }
         }
 		
