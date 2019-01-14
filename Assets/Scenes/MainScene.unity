@@ -1640,7 +1640,7 @@ MonoBehaviour:
   gameStart: 0
   timerOver: 0
   gameOver: 0
-  adaptive: 1
+  adaptive: 0
 --- !u!1 &569491915
 GameObject:
   m_ObjectHideFlags: 0

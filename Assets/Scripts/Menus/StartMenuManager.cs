@@ -19,30 +19,12 @@ public class StartMenuManager : MonoBehaviour
     // int corresponding to level scene
     private const int LEVEL_SCENE = 1;
 
-    // choose game mode
-    public void SetGameMode()
-    {
-        int game_mode = -1;
 
-        if (PlayerPrefs.HasKey(GameManager.GAME_MODE))
-        {
-            int prevGameMode = PlayerPrefs.GetInt(GameManager.GAME_MODE);
-
-            if (prevGameMode == 0) game_mode = 1;
-            else game_mode = 0;
-
-            PlayerPrefs.SetInt(GameManager.GAME_MODE, game_mode);
-        } else
-        {
-            game_mode = Random.Range(0, 2);
-            PlayerPrefs.SetInt(GameManager.GAME_MODE, game_mode);   // 0 is linear, 1 is adaptive
-        }
-    }
 
     // play game
     public void PlayGame()
     {
-        SetGameMode();
+        GameManager.SetGameMode();
         SceneManager.LoadScene(LEVEL_SCENE);
     }
 
