@@ -19,8 +19,6 @@ public class StartMenuManager : MonoBehaviour
     // int corresponding to level scene
     private const int LEVEL_SCENE = 1;
 
-
-
     // play game
     public void PlayGame()
     {

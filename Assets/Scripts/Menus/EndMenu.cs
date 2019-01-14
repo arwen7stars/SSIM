@@ -78,12 +78,7 @@ public class EndMenu : MonoBehaviour {
 
     public void BackToMenu()
     {
-        // if next scene to load is the game
-        if (backScene == 1)
-        {
-            GameManager.SetGameMode();
-        }
-
+        GameManager.UpdateGameMode();
         SceneManager.LoadScene(backScene);
     }
 }

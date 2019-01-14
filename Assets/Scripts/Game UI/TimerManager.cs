@@ -70,7 +70,7 @@ public class TimerManager : MonoBehaviour
                     // game over
                     int finalScore = GameManager.instance.GetScore();
                     PlayerHighscore.AddScore(finalScore);
-                    UpdatePlayerPrefs();
+                    GameManager.UpdateGameTracker();
 
                     savedScore = true;
 
@@ -79,15 +79,6 @@ public class TimerManager : MonoBehaviour
             }
         }
 
-    }
-
-    public void UpdatePlayerPrefs()
-    {
-        if (PlayerPrefs.HasKey(GameManager.SECOND_GAME))
-        {
-            PlayerPrefs.SetInt(GameManager.SECOND_GAME, 1);         // 1 is true (second game)
-        }
-        else PlayerPrefs.SetInt(GameManager.SECOND_GAME, 0);        // 0 is false (first game)
     }
 
     // Show timer over message

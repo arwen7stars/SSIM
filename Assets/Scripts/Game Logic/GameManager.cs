@@ -103,11 +103,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static void UpdateGameTracker()
+    {
+        if (PlayerPrefs.HasKey(GameManager.SECOND_GAME))
+        {
+            PlayerPrefs.SetInt(GameManager.SECOND_GAME, 1);         // 1 is true (second game)
+        }
+        else PlayerPrefs.SetInt(GameManager.SECOND_GAME, 0);        // 0 is false (first game)
+    }
+
     // choose game mode
     public static void SetGameMode()
     {
         int game_mode = -1;
 
+        if (!PlayerPrefs.HasKey(GameManager.SECOND_GAME))       // if this is the first game
+        {
+            game_mode = Random.Range(0, 2);
+            PlayerPrefs.SetInt(GameManager.GAME_MODE, game_mode);   // 0 is linear, 1 is adaptive
+        }
+    }
+
+    // update game mode at the end of the game and after filling form
+    public static void UpdateGameMode()
+    {
+        int game_mode = -1;
+
+        // update game mode
         if (PlayerPrefs.HasKey(GameManager.GAME_MODE))
         {
             int prevGameMode = PlayerPrefs.GetInt(GameManager.GAME_MODE);
@@ -116,11 +138,6 @@ public class GameManager : MonoBehaviour
             else game_mode = 0;
 
             PlayerPrefs.SetInt(GameManager.GAME_MODE, game_mode);
-        }
-        else
-        {
-            game_mode = Random.Range(0, 2);
-            PlayerPrefs.SetInt(GameManager.GAME_MODE, game_mode);   // 0 is linear, 1 is adaptive
         }
     }
 
