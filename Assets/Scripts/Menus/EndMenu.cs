@@ -67,12 +67,14 @@ public class EndMenu : MonoBehaviour {
 
     public void OpenAdaptiveURL()
     {
-        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLScowbzmMvS71oPN12jQi90phShIpEoPyKllXpf0JeQyza5TIg/viewform");
+        string data = GameManager.instance.GetGameStats();
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLScowbzmMvS71oPN12jQi90phShIpEoPyKllXpf0JeQyza5TIg/viewform?entry.2079128516=" + data);
     }
 
     public void OpenLinearURL()
     {
-        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSfD_2BSpXdPfZtYkvz4aS9Jf6uAdmgGZKIqYUIqznMTCG_wDg/viewform");
+        string data = GameManager.instance.GetGameStats();
+        Application.OpenURL("https://docs.google.com/forms/d/e/1FAIpQLSfD_2BSpXdPfZtYkvz4aS9Jf6uAdmgGZKIqYUIqznMTCG_wDg/viewform?entry.1215284005=" + data);
     }
 
 

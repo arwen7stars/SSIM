@@ -69,11 +69,17 @@ public class GameManager : MonoBehaviour
 	// number of missed ducks
 	private int missedDucks = 0;
 
+    // missed ducks per round
+    private List<int> missedDucksPerRound = new List<int>();
+
+
 	// mouse total travelled distance
 	private float mouseTotalTravelledDistance = 0;
 
 	// mouse travelled distance (per round)
 	private float mouseTravelledDistance = 0;
+
+    private List<float> mouseDistPerRound = new List<float>();
 
     // current score
     private int score = 0;
@@ -101,6 +107,20 @@ public class GameManager : MonoBehaviour
             // then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
             Destroy(gameObject);
         }
+    }
+
+
+    // round;acc;react_t;m_ducks;m_dist
+    public string GetGameStats()
+    {
+        string str = "";
+        for (int i = 0; i < shotsPerRound.Count; i++)
+        {
+            if (i > 0) str += "%0A";
+            str += (i + 1) + ";" + shotsPerRound[i] + ";" + ducksPerRound[i] + ";" + missedDucksPerRound[i] + ";" + mouseDistPerRound[i];
+        }
+
+        return str;
     }
 
     public static void UpdateGameTracker()
@@ -219,7 +239,10 @@ public class GameManager : MonoBehaviour
 		ducksMean = ducksMean / ducks.Count;
 		ducksPerRound.Add(ducksMean);
 
-		Debug.Log("Round: #" + shotsPerRound.Count + ", Missed Ducks: " + missedDucks + ", Accuracy: " + (shotsMean * 100).ToString("F2") +
+        missedDucksPerRound.Add(missedDucks);
+        mouseDistPerRound.Add(mouseTravelledDistance);
+
+        Debug.Log("Round: #" + shotsPerRound.Count + ", Missed Ducks: " + missedDucks + ", Accuracy: " + (shotsMean * 100).ToString("F2") +
 		"%, Reaction Time: " + ducksMean.ToString("F2") + "s, Mouse Travelled Distance: " + mouseTravelledDistance + "px.");
 
 		// prepare next ite
